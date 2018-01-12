@@ -8,12 +8,8 @@
 
 <ion-content padding>
   <ion-card>
-      <img src="https://assets.chucknorris.host/img/avatar/chuck-norris.png" alt="title"/>
       <ion-card-content>
-         <ion-card-title>
-           Test
-         </ion-card-title>
-         <p>Test</p>
+         <h1>{{joke.value}}</h1>
       </ion-card-content>
     </ion-card>
      <form [formGroup]="form" (ngSubmit)="onSubmit()">

@@ -8,9 +8,8 @@ export class JokeService{
   constructor(private http: Http){}
 
   getARandomJoke(){
-    return this.http.get('https://api.chucknorris.io/jokes/random?category=celebrity')
+    return this.http.get('https://api.chucknorris.io/jokes/random')
       .map((response: Response)=>{
-        console.log(response.json());
         return response.json();
       });
   }
@@ -22,8 +21,4 @@ export class JokeService{
         });
   }
 
-  getAllCategories(){
-    console.log(this.categories);
-    return this.categories.slice();
-  }
 }

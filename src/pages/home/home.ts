@@ -4,6 +4,7 @@ import {Http} from "@angular/http";
 import 'rxjs/Rx';
 import {FormControl, FormGroup} from "@angular/forms";
 import {JokeService} from "../../services/joke.service";
+import {Joke} from "../../models/joke.model";
 
 @Component({
   selector: 'page-home',
@@ -12,6 +13,7 @@ import {JokeService} from "../../services/joke.service";
 export class HomePage implements OnInit{
   categories: string[] =[];
   form: FormGroup;
+  joke: Joke = new Joke([],'','','','');
   constructor(public navCtrl: NavController, private http: Http,
   private jokeService: JokeService) {}
 
@@ -34,6 +36,11 @@ export class HomePage implements OnInit{
   }
 
   onSubmit(){
-    console.log(this.form.value.category);
+    this.jokeService.getARandomJoke().subscribe((joke: Joke) => {
+      this.joke = joke;
+      },
+      error => {
+        console.log(error);
+      });
   }
 }
