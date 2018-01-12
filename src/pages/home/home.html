@@ -1,14 +1,37 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Jokes
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
-</ion-content>
+  <ion-card>
+      <img src="https://assets.chucknorris.host/img/avatar/chuck-norris.png" alt="title"/>
+      <ion-card-content>
+         <ion-card-title>
+           Test
+         </ion-card-title>
+         <p>Test</p>
+      </ion-card-content>
+    </ion-card>
+     <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <ion-list>
+         <ion-item>
+            <ion-label>
+              Select a category
+            </ion-label>
+            <ion-select formControlName="category">
+              <ion-option *ngFor="let category of categories" [value]="category">
+                  {{category | uppercase}}
+              </ion-option>
+            </ion-select>
+         </ion-item>
+       </ion-list>
+       <div padding>
+                <button block ion-button round type="submit" full>Generate a Random Joke</button>
+        </div>
+       </form>
+  </ion-content>
+
