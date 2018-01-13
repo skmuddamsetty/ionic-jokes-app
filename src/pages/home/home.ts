@@ -35,12 +35,21 @@ export class HomePage implements OnInit{
     });
   }
 
-  onSubmit(){
-    this.jokeService.getARandomJoke().subscribe((joke: Joke) => {
-      this.joke = joke;
-      },
-      error => {
-        console.log(error);
-      });
+  onSubmit() {
+    if (this.form.value.category) {
+      this.jokeService.getARandomJokeBasedOnSelectedCategory(this.form.value.category).subscribe((joke: Joke) => {
+          this.joke = joke;
+        },
+        error => {
+          console.log(error);
+        });
+    } else {
+      this.jokeService.getARandomJoke().subscribe((joke: Joke) => {
+          this.joke = joke;
+        },
+        error => {
+          console.log(error);
+        });
+    }
   }
 }

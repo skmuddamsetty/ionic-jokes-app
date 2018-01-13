@@ -21,4 +21,11 @@ export class JokeService{
         });
   }
 
+  getARandomJokeBasedOnSelectedCategory(category: string){
+    return this.http.get('https://api.chucknorris.io/jokes/random?category='+category)
+      .map((response: Response)=>{
+        return response.json();
+      });
+  }
+
 }
